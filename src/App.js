@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
+import Inicio from './pages/Inicio';
+import Contato from './pages/Contato';
+import Sobre from './pages/Sobre';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Início</Link>
+            </li>
+            <li>
+              <Link to="/sobre">Sobre</Link>
+            </li>
+            <li>
+              <Link to="/contato">Contato</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Define as rotas da aplicação */}
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/contato" element={<Contato />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
